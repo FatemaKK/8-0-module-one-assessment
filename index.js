@@ -211,9 +211,9 @@ function findById(movies, id) {
 //check if movie genre matches genre provided
 //if there is a match add it to the array
 //if there is no match or no movies provided return an empty array
-function filterByGenre(movie) {
+function filterByGenre(movies, category) {
   let filterMovie = [];
-    if(!movies.length){
+    if(!movies){
       return filterMovie;
     }
     for (let movie of movies){
@@ -290,31 +290,7 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, number) {
 //convert it to a number
 //when highest box office number is found
 //return the name of that movie
-function getBiggestBoxOfficeMovie(movies) {
-  let movieObj = movies[0]
-  if(!movies.length){
-    return null;
-  }
-  for (let i = 0; i < movies.length; i++){
-    if(Number(movies[i].boxOffice) > (movieObj.boxOffice)){
-      movieObj = movies[i]
-    }
-  }
-    return movieObj.title
-  }
-  // let nameOfMovie = "";
-  // let highestAmount = Number(movies[0].boxOffice)
-  // if (!movies.length){
-  //   return null
-  // }
-  // for (let i = 0; i < movies.length; i++){
-    
-  //   if((movies[i].boxOffice) > highestAmount){
-  //     highestAmount = Number(movies[i].boxOffice)
-  //     nameOfMovie = movies[i].title
-  //   }
-  // }
-  // return nameOfMovie;
+function getBiggestBoxOfficeMovie() {}
 
    
       
