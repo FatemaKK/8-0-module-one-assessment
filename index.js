@@ -37,7 +37,7 @@ const exampleMovies = require("./movies");
 //if no title provided array is empty
 //return the array with titles
 function getAllMovieTitles(movies) {
-  let movieNames = []
+  let movieNames = [];
   for (let i = 0; i < movies.length; i++){
     movieNames.push(movies[i].title)
   }
@@ -65,7 +65,7 @@ function getAllMovieTitles(movies) {
 //metascore is a string 
 //convert metascore string to a number 
 function getHighestMetascore(movies) {
-  let highestMetascore = 0
+  let highestMetascore = 0;
   for (let i = 0; i < movies.length; i++){
     let metascoreStr = Number(movies[i].metascore)
     if(metascoreStr > highestMetascore){
@@ -87,7 +87,30 @@ function getHighestMetascore(movies) {
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+//returns a number
+//number is average of imdb ratings of all movies
+//imdb rating is a string
+//convert imdb rating string to a number
+//create a loop
+//check for the imdb ratings
+//add all imdb ratings
+//divide the total with the length of the movies (to get the number of movie ratings provided) for the average
+//return result/average 
+//return 0 if movies array is empty
+function getAverageIMDBRating(movies) {
+  let average = 0;
+  let total = 0;
+ 
+  for (let i = 0; i < movies.length; i++){
+    let imdbRatingStr = Number(movies[i].imdbRating)
+    total += imdbRatingStr
+    }
+  if (!movies.length){
+    return 0
+  }
+  average = total/movies.length;
+  return average;
+}
 
 /**
  * countByRating()
