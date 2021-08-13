@@ -222,9 +222,9 @@ function filterByGenre(movies, category) {
       }
     }
     return filterMovie;
-  }
+}
 
-
+//checking gut push status
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -290,7 +290,22 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, number) {
 //convert it to a number
 //when highest box office number is found
 //return the name of that movie
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  let nameOfMovie = "";
+  if(!movies.length){
+    return null
+  }
+  for (let i = 0; i < movies.length; i++){
+    let highestAmount = Number(movies[0].boxOffice)
+    if((movies[i].boxOffice) > highestAmount){
+      highestAmount = Number(movies[i].boxOffice)
+      nameOfMovie = movies[i].title
+    }
+  }
+  return nameOfMovie;
+}
+    
+
 
    
       
