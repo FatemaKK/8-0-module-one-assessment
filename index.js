@@ -180,11 +180,10 @@ function findById(movies, id) {
     } else if (movie.imdbID === id){
       return movieID.movie
     }
-    
   }
-
   return movieID;
 }
+
 
 /**
  * filterByGenre()
@@ -206,7 +205,25 @@ function findById(movies, id) {
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+//return an array 
+//array will have movie objects
+//make a loop
+//check if movie genre matches genre provided
+//if there is a match add it to the array
+//if there is no match or no movies provided return an empty array
+function filterByGenre(movies, category) {
+  let filterMovie = []
+    if(!movies.length){
+       return filterMovie;
+    }
+  for (movie of movies){
+    if(movie.genre === category){
+      filterMovie.push(movie)
+    }
+  }
+
+  return filterMovie;
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
