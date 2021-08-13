@@ -75,7 +75,6 @@ function getHighestMetascore(movies) {
   return highestMetascore;
 }
   
-
 /**
  * getAverageIMDBRating()
  * -----------------------------
@@ -133,22 +132,20 @@ function getAverageIMDBRating(movies) {
 //return object with the key : movie rated & value : number of movies
 function countByRating(movies) {
   let ratingCount = {};
-  
-  for (let movie of movies){
-    let count = 0
-    if(movie.rated){
-     count ++
-     ratingCount[movie.rated] = count
-    } 
-  }
-
   if(!movies.length){
     return ratingCount;
   }
-  
-  return ratingCount;
+  for (let movie of movies){
+    let count = 0;
+    if(movie.rated){
+      count ++
+      ratingCount.movie.rated = count;
+    }
+  } 
+    return ratingCount;
 }
 
+  
 /**
  * findById()
  * -----------------------------
@@ -170,20 +167,18 @@ function countByRating(movies) {
 //check for the id match
 //return the object if match is found
 function findById(movies, id) {
-  let movieID = {}
   if(!movies.length){
     return null;
   }
   for (let movie of movies){
-    if(movie.imdbID !== id){
-      return null;
-    } else if (movie.imdbID === id){
-      return movieID[movie]
-    }
+    if(movie.imdbID === id){
+      return movie;
+    } 
   }
-  return movieID;
-}
+}  
 
+  
+  
 
 /**
  * filterByGenre()
@@ -211,20 +206,21 @@ function findById(movies, id) {
 //check if movie genre matches genre provided
 //if there is a match add it to the array
 //if there is no match or no movies provided return an empty array
+//case-insensitive
 function filterByGenre(movies, category) {
   let filterMovie = [];
-    if(!movies){
+    if(!movies.length){
       return filterMovie;
     }
     for (let movie of movies){
       if(movie.genre === category){
         filterMovie.push(movie)
+      }if(movie.genre !== category){
+          return filterMovie;
+        }
       }
+      return filterMovie;
     }
-    return filterMovie;
-}
-
-check git push status
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -256,21 +252,18 @@ check git push status
 function getAllMoviesReleasedAtOrBeforeYear(movies, number) {
   let date = [];
   if(!movies.length){
-    return date
+    return date;
   }
   for (let movie of movies){
     if(movie.released <= number){
       date.push(movie)
     }if (movie.released !== number || !movie.released === number){
-      return date
+      return date;
     }
   }
   return Number(date);
 }
   
-
-
-
 /**
  * getBiggestBoxOfficeMovie()
  * -----------------------------
@@ -290,26 +283,19 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, number) {
 //convert it to a number
 //when highest box office number is found
 //return the name of that movie
+
 function getBiggestBoxOfficeMovie(movies) {
-  let nameOfMovie = "";
+  let movieObj = movies[0]
   if(!movies.length){
-    return null
+    return null;
   }
   for (let i = 0; i < movies.length; i++){
-    let highestAmount = Number(movies[0].boxOffice)
-    if((movies[i].boxOffice) > highestAmount){
-      highestAmount = Number(movies[i].boxOffice)
-      nameOfMovie = movies[i].title
+    if(Number(movies[i].boxOffice) > (movieObj.boxOffice)){
+      movieObj = movies[i];
     }
   }
-  return nameOfMovie;
-}
-    
-
-
-   
-      
-
+    return movieObj.title;
+  }
 
 
 // Do not change anything below this line.
