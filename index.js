@@ -32,8 +32,9 @@ const exampleMovies = require("./movies");
 //create an empty array
 //all titles of movies
 //titles is in an array of objects
-//make a loop to check for the title
-//add title to the empty array
+//make a loop to check for title
+//add all titles to the empty array
+//if no title provided array is empty
 //return the array with titles
 function getAllMovieTitles(movies) {
   let movieNames = []
@@ -54,7 +55,26 @@ function getAllMovieTitles(movies) {
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+//return a number
+//number = highest metascore
+//make a loop
+//to check all metascores
+//the highest metascore will be returned
+//if the movies array is empty return '0'
+//create a variable with a starting score
+//metascore is a string 
+//convert metascore string to a number 
+function getHighestMetascore(movies) {
+  let highestMetascore = 0
+  for (let i = 0; i < movies.length; i++){
+    let metascoreStr = Number(movies[i].metascore)
+    if(metascoreStr > highestMetascore){
+      highestMetascore = metascoreStr
+    }
+  }
+  return highestMetascore;
+}
+  
 
 /**
  * getAverageIMDBRating()
