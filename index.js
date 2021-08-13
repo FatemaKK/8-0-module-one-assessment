@@ -106,7 +106,7 @@ function getAverageIMDBRating(movies) {
     total += imdbRatingStr
     }
   if (!movies.length){
-    return 0
+    return 0;
   }
   average = total/movies.length;
   return average;
@@ -123,7 +123,31 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+//returns an object
+//keys of object : movie rated
+//value of keys in object : number of movies
+//if no movies return empty object
+//make a loop
+//check for movie rated
+//add key and values to that empty object
+//return object with the key : movie rated & value : number of movies
+function countByRating(movies) {
+  let ratingCount = {};
+  
+  for (let movie of movies){
+    let count = 0
+    if(movie.rated){
+     count ++
+     ratingCount[movie.rated] = count
+    } 
+  }
+
+  if(!movies.length){
+    return ratingCount;
+  }
+  
+  return ratingCount;
+}
 
 /**
  * findById()
@@ -139,7 +163,28 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+//returns an object
+//returns entire movie object matching the id
+//if movies array is empty or movie id doesn't match return "null"
+//create a loop
+//check for the id match
+//return the object if match is found
+function findById(movies, id) {
+  let movieID = {}
+  if(!movies.length){
+    return null;
+  }
+  for (let movie of movies){
+    if(movie.imdbID !== id){
+      return null;
+    } else if (movie.imdbID === id){
+      return movieID.movie
+    }
+    
+  }
+
+  return movieID;
+}
 
 /**
  * filterByGenre()
