@@ -178,7 +178,7 @@ function findById(movies, id) {
     if(movie.imdbID !== id){
       return null;
     } else if (movie.imdbID === id){
-      return movieID.movie
+      return movieID[movie]
     }
   }
   return movieID;
@@ -211,19 +211,20 @@ function findById(movies, id) {
 //check if movie genre matches genre provided
 //if there is a match add it to the array
 //if there is no match or no movies provided return an empty array
-function filterByGenre(movies, category) {
-  let filterMovie = []
+function filterByGenre(movie) {
+  let filterMovie = [];
     if(!movies.length){
-       return filterMovie;
+      return filterMovie;
     }
-  for (movie of movies){
-    if(movie.genre === category){
-      filterMovie.push(movie)
+    for (let movie of movies){
+      if(movie.genre === category){
+        filterMovie.push(movie)
+      }
     }
+    return filterMovie;
   }
 
-  return filterMovie;
-}
+
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -247,7 +248,28 @@ function filterByGenre(movies, category) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+//returns an array
+//array contains object that matches the year given or is less than the year given
+//make a loop
+//check if the movie release year is less than or equal to the year given
+//return an array of object = movies that are less than or equal to the year given
+function getAllMoviesReleasedAtOrBeforeYear(movies, number) {
+  let date = [];
+  if(!movies.length){
+    return date
+  }
+  for (let movie of movies){
+    if(movie.released <= number){
+      date.push(movie)
+    }if (movie.released !== number || !movie.released === number){
+      return date
+    }
+  }
+  return Number(date);
+}
+  
+
+
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -260,7 +282,44 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+//returns a string
+//string is name of a movie
+//make a loop
+//check highest box office amount
+//box office amount is a string
+//convert it to a number
+//when highest box office number is found
+//return the name of that movie
+function getBiggestBoxOfficeMovie(movies) {
+  let movieObj = movies[0]
+  if(!movies.length){
+    return null;
+  }
+  for (let i = 0; i < movies.length; i++){
+    if(Number(movies[i].boxOffice) > (movieObj.boxOffice)){
+      movieObj = movies[i]
+    }
+  }
+    return movieObj.title
+  }
+  // let nameOfMovie = "";
+  // let highestAmount = Number(movies[0].boxOffice)
+  // if (!movies.length){
+  //   return null
+  // }
+  // for (let i = 0; i < movies.length; i++){
+    
+  //   if((movies[i].boxOffice) > highestAmount){
+  //     highestAmount = Number(movies[i].boxOffice)
+  //     nameOfMovie = movies[i].title
+  //   }
+  // }
+  // return nameOfMovie;
+
+   
+      
+
+
 
 // Do not change anything below this line.
 module.exports = {
