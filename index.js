@@ -224,7 +224,7 @@ function filterByGenre(movies, category) {
     return filterMovie;
 }
 
-//checking gut push status
+check git push status
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
