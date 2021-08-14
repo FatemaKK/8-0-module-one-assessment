@@ -131,21 +131,22 @@ function getAverageIMDBRating(movies) {
 //add key and values to that empty object
 //return object with the key : movie rated & value : number of movies
 function countByRating(movies) {
-  let ratingCount = {};
+  let obj = {};
   if(!movies.length){
-    return ratingCount;
-  }
-  for (let movie of movies){
-    let count = 0;
-    if(movie.rated){
-      count ++
-      ratingCount.movie.rated = count;
-    }
+    return obj;
   } 
-    return ratingCount;
+  for (let movie of movies){
+    if(!obj[movie.rated]){
+      obj[movie.rated] = 1
+    }else if(obj.hasOwnProperty(movie.rated)){
+      obj[movie.rated] += 1
+    }
+  } return obj;
 }
-
   
+
+
+   
 /**
  * findById()
  * -----------------------------
@@ -173,7 +174,10 @@ function findById(movies, id) {
   for (let movie of movies){
     if(movie.imdbID === id){
       return movie;
-    } 
+    }
+    // else {
+    //   return null;
+    // }
   }
 }  
 
