@@ -170,15 +170,12 @@ function countByRating(movies) {
 function findById(movies, id) {
   if(!movies.length){
     return null;
-  }
+  } 
   for (let movie of movies){
     if(movie.imdbID === id){
       return movie;
-    }
-    // else {
-    //   return null;
-    // }
-  }
+    } 
+  } return null;
 }  
 
   
