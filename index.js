@@ -296,7 +296,11 @@ function getBiggestBoxOfficeMovie(movies) {
     }
   }
     return movieObj.title;
-  }
+}
+ 
+  
+  
+  
 
 
 // Do not change anything below this line.
